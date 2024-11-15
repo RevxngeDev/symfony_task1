@@ -1,0 +1,32 @@
+<h1 style="text-align: center; font-family: Arial, sans-serif; color: #333;">
+    Calendar for Month {{ month }} of Year {{ year }}
+</h1>
+<table style="width: 80%; margin: auto; border-collapse: collapse; text-align: center; font-family: Arial, sans-serif; font-size: 14px;">
+    <thead>
+    <tr style="background-color: #f2f2f2;">
+        <th style="border: 1px solid #ccc; padding: 8px;">Monday</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Tuesday</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Wednesday</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Thursday</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Friday</th>
+        <th style="border: 1px solid #ccc; padding: 8px; color: red;">Saturday</th>
+        <th style="border: 1px solid #ccc; padding: 8px; color: red;">Sunday</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for week in calendar %}
+        <tr>
+            {% for day in week %}
+                <td style="
+                        border: 1px solid #ccc;
+                        padding: 10px;
+                        background-color: {{ day and day.isWeekend ? '#ffeeee' : 'white' }};
+                        color: {{ day and day.isWeekend ? 'red' : 'black' }};
+                        ">
+                    {{ day ? day.day : '' }}
+                </td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
